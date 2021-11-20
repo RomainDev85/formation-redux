@@ -7,11 +7,16 @@ import rootReducer from "./reducers";
 import thunk from "redux-thunk";
 import App from "./App";
 import "./styles/index.scss";
+import { getPost } from "./actions/post.action";
+import { getUser } from "./actions/user.action";
 
 const store = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(thunk)) // Enlever en production
-)
+);
+
+store.dispatch(getPost());
+store.dispatch(getUser());
 
 ReactDOM.render(
     <Provider store={store}>
